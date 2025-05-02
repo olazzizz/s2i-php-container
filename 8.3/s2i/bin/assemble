@@ -60,6 +60,10 @@ if [ -f composer.json ]; then
   # Install App dependencies using Composer
   ./composer.phar install --no-interaction --no-ansi --optimize-autoloader $COMPOSER_ARGS
 
+  # Install the gd extension
+  pecl install gd
+  docker-php-ext-enable gd
+
   if [ ! -f composer.lock ]; then
     echo -e "\nConsider adding a 'composer.lock' file into your source repository.\n"
   fi
